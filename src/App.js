@@ -1,6 +1,8 @@
 import React, { Fragment, useState } from 'react';
-import Header from './components/ Header';
+import Header from './components/Header';
 import Form from './components/Form';
+import Msj from './components/Msj';
+import Result from './components/Result';
 
 function App() {
   //useState needs the value of the state (quantity) and the method to update that state (saveQuantity)
@@ -9,6 +11,13 @@ function App() {
   const [quantity, saveQuantity] = useState(0);
   const [deadline, saveDeadline] = useState('');
   const [total, saveTotal] = useState(0);
+
+  let component;
+  if (total === 0) {
+    component = <Msj />;
+  } else {
+    component = <Result />;
+  }
 
   return (
     <Fragment>
@@ -24,7 +33,7 @@ function App() {
           saveTotal={saveTotal}
         />
 
-        <p>Amount to be paid: $ {total}</p>
+        <div className="mensajes">{component}</div>
       </div>
     </Fragment>
   );
