@@ -1,8 +1,11 @@
 import React, { useState, Fragment } from 'react';
 import {calculateTotal} from '../helpers';
 
-const Form = ({ quantity, saveQuantity, deadline, saveDeadline }) => {
-  //useState to validate the form. Starts with false, if there are errors in the form or empty fields, error changes to true and shows a error message.
+const Form = (props) => {
+  
+  const { quantity, saveQuantity, deadline, saveDeadline, total, saveTotal } = props;
+  
+    //useState to validate the form. Starts with false, if there are errors in the form or empty fields, error changes to true and shows a error message.
   const [error, saveError] = useState(false);
 
   const readQuantity = (e) => {
@@ -15,7 +18,7 @@ const Form = ({ quantity, saveQuantity, deadline, saveDeadline }) => {
 
   const calculateLoan = (e) => {
     e.preventDefault();
-    console.log('Enviando formulario');
+   
     //validate
     if (quantity === 0 || deadline === '') {
       saveError(true);
@@ -27,7 +30,9 @@ const Form = ({ quantity, saveQuantity, deadline, saveDeadline }) => {
 
     //make quote
     const total = calculateTotal(quantity, deadline);
-    console.log(total);
+
+    saveTotal(total);
+    
   };
 
   return (
