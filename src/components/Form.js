@@ -1,4 +1,5 @@
 import React, { useState, Fragment } from 'react';
+import {calculateTotal} from '../helpers';
 
 const Form = ({ quantity, saveQuantity, deadline, saveDeadline }) => {
   //useState to validate the form. Starts with false, if there are errors in the form or empty fields, error changes to true and shows a error message.
@@ -25,6 +26,7 @@ const Form = ({ quantity, saveQuantity, deadline, saveDeadline }) => {
     saveError(false);
 
     //make quote
+    calculateTotal(quantity, deadline);
   };
 
   return (
