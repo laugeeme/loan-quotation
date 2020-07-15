@@ -16,15 +16,14 @@ function App() {
 
   let component;
 
-  if (loading){
-    component = <Spinner />
+  if (loading) {
+    component = <Spinner />;
   } else if (total === 0) {
     component = <Msj />;
   } else {
-    component = <Result 
-              total = {total}
-              deadline={deadline}
-              quantity={quantity}/>;
+    component = (
+      <Result total={total} deadline={deadline} quantity={quantity} />
+    );
   }
 
   return (
@@ -37,7 +36,6 @@ function App() {
           saveQuantity={saveQuantity}
           deadline={deadline}
           saveDeadline={saveDeadline}
-          total={total}
           saveTotal={saveTotal}
           saveLoading={saveLoading}
         />

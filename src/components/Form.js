@@ -7,7 +7,6 @@ const Form = (props) => {
     saveQuantity,
     deadline,
     saveDeadline,
-    total,
     saveTotal,
     saveLoading,
   } = props;
