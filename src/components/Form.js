@@ -1,6 +1,15 @@
 import React from 'react';
 
-const Form = () => {
+const Form = ({ quantity, saveQuantity, deadline, saveDeadline }) => {
+  const readQuantity = (e) => {
+    saveQuantity(parseInt(e.target.value));
+  };
+
+  const readDeadline = (e) => {
+    saveDeadline(parseInt(e.target.value));
+  };
+
+
   return (
     <form>
       <div className="row">
@@ -10,11 +19,12 @@ const Form = () => {
             className="u-full-width"
             type="number"
             placeholder="Example: 3000"
+            onChange={readQuantity}
           />
         </div>
         <div>
           <label>Time to pay</label>
-          <select className="u-full-width">
+          <select className="u-full-width" onChange={readDeadline}>
             <option value="">Select</option>
             <option value="3">3 months</option>
             <option value="6">6 months</option>
