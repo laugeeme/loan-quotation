@@ -26,7 +26,8 @@ const Form = ({ quantity, saveQuantity, deadline, saveDeadline }) => {
     saveError(false);
 
     //make quote
-    calculateTotal(quantity, deadline);
+    const total = calculateTotal(quantity, deadline);
+    console.log(total);
   };
 
   return (

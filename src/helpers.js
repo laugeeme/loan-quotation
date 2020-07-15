@@ -1,5 +1,5 @@
 export function calculateTotal(quantity, deadline) {
-  //Quantity
+  //Calculate interest on quantity
   // 0-1000 = 25%
   //1001-500 = 20%
   //5001-10000 = 15%
@@ -17,7 +17,30 @@ export function calculateTotal(quantity, deadline) {
     totalQuantity = quantity * 0.1;
   }
 
-  //Calculate deadline of interests
+  //Calculate interest on deadline
+  // 3 = 5%
+  // 6 = 10%
+  //12 = 15%
+  //24 = 20%
 
-  console.log(totalQuantity);
+  let totalDeadline = 0;
+
+  switch (deadline) {
+    case 3:
+      totalDeadline = quantity * 0.05;
+      break;
+    case 6:
+      totalDeadline = quantity * 0.1;
+      break;
+    case 12:
+      totalDeadline = quantity * 0.15;
+      break;
+    case 24:
+      totalDeadline = quantity * 0.2;
+      break;
+    default:
+      break;
+  }
+
+  return totalDeadline + totalQuantity + quantity;
 }
