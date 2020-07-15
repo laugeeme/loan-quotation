@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Form from './components/Form';
 import Msj from './components/Msj';
 import Result from './components/Result';
+import Spinner from './components/Spinner';
 
 function App() {
   //useState needs the value of the state (quantity) and the method to update that state (saveQuantity)
@@ -11,9 +12,13 @@ function App() {
   const [quantity, saveQuantity] = useState(0);
   const [deadline, saveDeadline] = useState('');
   const [total, saveTotal] = useState(0);
+  const [loading, saveLoading] = useState(false);
 
   let component;
-  if (total === 0) {
+
+  if (loading){
+    component = <Spinner />
+  } else if (total === 0) {
     component = <Msj />;
   } else {
     component = <Result 
@@ -34,6 +39,7 @@ function App() {
           saveDeadline={saveDeadline}
           total={total}
           saveTotal={saveTotal}
+          saveLoading={saveLoading}
         />
 
         <div className="mensajes">{component}</div>

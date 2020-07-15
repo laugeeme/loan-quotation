@@ -1,11 +1,18 @@
 import React, { useState, Fragment } from 'react';
-import {calculateTotal} from '../helpers';
+import { calculateTotal } from '../helpers';
 
 const Form = (props) => {
-  
-  const { quantity, saveQuantity, deadline, saveDeadline, total, saveTotal } = props;
-  
-    //useState to validate the form. Starts with false, if there are errors in the form or empty fields, error changes to true and shows a error message.
+  const {
+    quantity,
+    saveQuantity,
+    deadline,
+    saveDeadline,
+    total,
+    saveTotal,
+    saveLoading,
+  } = props;
+
+  //useState to validate the form. Starts with false, if there are errors in the form or empty fields, error changes to true and shows a error message.
   const [error, saveError] = useState(false);
 
   const readQuantity = (e) => {
@@ -18,7 +25,7 @@ const Form = (props) => {
 
   const calculateLoan = (e) => {
     e.preventDefault();
-   
+
     //validate
     if (quantity === 0 || deadline === '') {
       saveError(true);
@@ -28,11 +35,18 @@ const Form = (props) => {
     //delete previous error
     saveError(false);
 
-    //make quote
-    const total = calculateTotal(quantity, deadline);
+    //enable Spinner
+    saveLoading(true);
 
-    saveTotal(total);
-    
+    setTimeout(() => {
+      //make quote
+      const total = calculateTotal(quantity, deadline);
+
+      saveTotal(total);
+
+      //disable Spinner
+      saveLoading(false);
+    }, 3000);
   };
 
   return (
