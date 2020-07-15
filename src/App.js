@@ -8,7 +8,7 @@ function App() {
     //Define state. UseState starts with 0$, and when saveQuantity changes, useStates updates.
 
     const [quantity, saveQuantity]= useState(0);
-    const [deadline, saveDeadline]= useState(0);
+    const [deadline, saveDeadline]= useState('');
 
 
   return (

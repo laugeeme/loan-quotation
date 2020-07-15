@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Form = ({ quantity, saveQuantity, deadline, saveDeadline }) => {
+  
+    //useState to validate the form. Starts with false, if there are errors in the form or empty fields, error changes to true and shows a error message.
+  const [error, saveError] = useState(false);
+
   const readQuantity = (e) => {
     saveQuantity(parseInt(e.target.value));
   };
@@ -9,9 +13,19 @@ const Form = ({ quantity, saveQuantity, deadline, saveDeadline }) => {
     saveDeadline(parseInt(e.target.value));
   };
 
+  const calculateLoan = (e) => {
+    e.preventDefault();
+    console.log('Enviando formulario');
+    //validate
+    if (quantity === 0 || deadline === '') {
+      saveError(true);
+    }
+
+    //make quote
+  };
 
   return (
-    <form>
+    <form onSubmit={calculateLoan}>
       <div className="row">
         <div>
           <label>Loan amount</label>
