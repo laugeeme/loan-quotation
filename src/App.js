@@ -16,7 +16,10 @@ function App() {
   if (total === 0) {
     component = <Msj />;
   } else {
-    component = <Result />;
+    component = <Result 
+              total = {total}
+              deadline={deadline}
+              quantity={quantity}/>;
   }
 
   return (
